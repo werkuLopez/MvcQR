@@ -1,0 +1,38 @@
+﻿@{
+    string qr = ViewData["qr"] as string;
+}
+<div class="container">
+    <div class="text-center">
+        <h2 class="text-black py-5">
+            Generador de
+            <span class="text-info">
+                QR
+            </span>
+        </h2>
+        <div class="py-3">
+            <form method="post" class="row gap-2">
+                <div class="col-md-8">
+                    <input class="form-control" name="texto" id="texto" placeholder="Introduzca el texto..." />
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-primary w-100">
+                        generar QR
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        @if (qr != null)
+        {
+            <div>
+                <img alt="qrgenerator" class="img-fluid" src="@string.Format("data:image/png;base64,{0}",qr)" height="300" width="300" />
+            </div>
+        }
+        else
+        {
+            <p class="text-danger">
+                @ViewData["mensaje"]
+            </p>
+        }
+    </div>
+</div>
